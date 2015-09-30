@@ -41,7 +41,7 @@ RUN apt-get -y install openssh-server uuid pwgen
 # Installing MineOS scripts
 RUN mkdir -p /usr/games /var/games/minecraft
 RUN  git clone git://github.com/hexparrot/mineos /usr/games/minecraft
-RUN cd /usr/games/minecraft
+WORKDIR /usr/games/minecraft
 RUN chmod +x server.py mineos_console.py generate-sslcert.sh 
 RUN ln -s /usr/games/minecraft/mineos_console.py /usr/local/bin/mineos
 
