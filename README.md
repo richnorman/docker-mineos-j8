@@ -6,8 +6,8 @@ Dockerfile for creating Mine OS server image.
 
 ## Usage
 
-    docker run -d yujiod/minecraft-mineos
-    docker run -d -p 8443:8443 -p 25565:25565 yujiod/minecraft-mineos
+    docker run -d rnorman/mineos
+    docker run -d -p 8443:8443 -p 25565:25565 rnorman/mineos 
 
 The WebUI on 8443 port with self signed SSL. When binding to 8443, open below URL.
 
@@ -40,4 +40,4 @@ The mount point is `/var/games/minecraft`.
 
     docker run -d -e PASSWORD=cr33p3r -v /var/games/minecraft -p 2222:22 -p 8443:443 \
     -p 25565:25565 -p 25566:25566 -p 25567:25567 -p 25568:25568 -p 25569:25569 -p 25570:25570 \
-    yujiod/minecraft-mineos 
+    rnorman/mineos 
