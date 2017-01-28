@@ -54,7 +54,7 @@ ADD supervisor_conf.d/sshd.conf /etc/supervisor/conf.d/sshd.conf
 RUN mkdir /var/games/minecraft/ssl_certs
 RUN mkdir /var/games/minecraft/log
 RUN mkdir /var/games/minecraft/run
-RUN mkdir /var/run/sshd
+#RUN mkdir /var/run/sshd
 
 # Add start script
 ADD start.sh /usr/games/minecraft/start.sh
