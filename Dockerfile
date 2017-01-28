@@ -1,13 +1,13 @@
-FROM ubuntu:trusty
+FROM ubuntu:xenial
 MAINTAINER rnorman
 
 # Installing Dependencies
 RUN apt-get update; \
-    apt-get -y install supervisor screen python-cherrypy3 rdiff-backup git openjdk-7-jre-headless; \
-    apt-get -y install openssh-server uuid pwgen; \
-    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections; \
-    apt-get install -y oracle-java8-installer; \
-    apt-get install -y oracle-java8-set-default
+    apt-get -y install supervisor screen python-cherrypy3 rdiff-backup git openjdk-8-jre-headless; \
+    apt-get -y install openssh-server uuid pwgen
+  #  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections; \
+   # apt-get install -y oracle-java8-installer; \
+    #apt-get install -y oracle-java8-set-default
 
 # Installing MineOS scripts
 RUN mkdir -p /usr/games /var/games/minecraft; \
