@@ -19,13 +19,13 @@ Login username is `minecraft`. Password is auto genereated. Please check passwor
 
 You can also specify a password on run the container. The environment variable is `PASSWORD`.
 
-    docker run -d -e PASSWORD=cr33p3r yujiod/minecraft-mineos
+    docker run -d -e PASSWORD=cr33p3r richnorman/mineos
 
 ## SSH Access
 
 The server can access to SSH by `minecraft` user, port 22.
 
-    docker run -d -e PASSWORD=cr33p3r -p 2222:22 -p 8443:8443 -p 25565:25565 yujiod/minecraft-mineos
+    docker run -d -e PASSWORD=cr33p3r -p 2222:22 -p 8443:8443 -p 25565:25565 richnorman/mineos 
     ssh minecraft@<hostname> -p 2222
 
 The password is automatically generated, or you specified in the container startup.
@@ -34,10 +34,10 @@ The password is automatically generated, or you specified in the container start
 
 The mount point is `/var/games/minecraft`.
 
-    docker run -d -v /var/games/minecraft yujiod/minecraft-mineos 
+    docker run -d -v /var/games/minecraft richnorman/mineos 
 
 ### Multiple minecraft server port binding
 
     docker run -d -e PASSWORD=cr33p3r -v /var/games/minecraft -p 2222:22 -p 8443:443 \
     -p 25565:25565 -p 25566:25566 -p 25567:25567 -p 25568:25568 -p 25569:25569 -p 25570:25570 \
-    rnorman/mineos 
+    richnorman/mineos 
