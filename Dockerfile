@@ -38,6 +38,7 @@ RUN apt-get install -y oracle-java8-set-default
 
 RUN apt-get -y install screen python-cherrypy3 mc rdiff-backup git
 RUN apt-get -y install openssh-server uuid pwgen
+RUN apt-get -y install supervisor
 
 # Installing MineOS scripts
 RUN mkdir -p /usr/games /var/games/minecraft
