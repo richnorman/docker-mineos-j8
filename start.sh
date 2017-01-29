@@ -11,13 +11,13 @@ GROUP=minecraft
 # Create dooes not exists directories
 chown $USER:$GROUP $DATAPATH
 if [ ! -d $DATAPATH/ssl_certs ]; then
-    /usr/bin/sudo -u $USER /usr/bin/mkdir $DATAPATH/ssl_certs
+    sudo -u $USER mkdir $DATAPATH/ssl_certs
 fi
 if [ ! -d $DATAPATH/log ]; then
-    /usr/bin/sudo -u $USER /usr/bin/mkdir $DATAPATH/log
+    sudo -u $USER mkdir $DATAPATH/log
 fi
 if [ ! -d $DATAPATH/run ]; then
-    /usr/bin/sudo -u $USER /usr/bin/mkdir $DATAPATH/run
+    sudo -u $USER mkdir $DATAPATH/run
 fi
 
 # Changing password
@@ -27,18 +27,18 @@ if [ ! -f $SCRIPTPATH/.initialized ]; then
         echo "Login password is \"$PASSWORD\""
     fi
     echo "$USER:$PASSWORD" | chpasswd
-    /usr/bin/sudo -u $USER /usr/bin/touch $SCRIPTPATH/.initialized
+    sudo -u $USER touch $SCRIPTPATH/.initialized
 fi
 
 # Generate ssl certrificates
 CERT_DIR=$DATAPATH/ssl_certs
 if [ ! -f "$CERT_DIR/mineos.pem" ]; then
-    /usr/bin/sudo -u $USER CERTFILE=$CERT_DIR/mineos.pem CRTFILE=$CERT_DIR/mineos.crt KEYFILE=$CERT_DIR/mineos.key ./generate-sslcert.sh
+    sudo -u $USER CERTFILE=$CERT_DIR/mineos.pem CRTFILE=$CERT_DIR/mineos.crt KEYFILE=$CERT_DIR/mineos.key ./generate-sslcert.sh
 fi
 
 # Starting minecraft servers
-/usr/bin/sudo -u $USER /usr/bin/python $SCRIPTPATH/$CONSOLE -d $DATAPATH restore
-/usr/bin/sudo -u $USER /usr/bin/python $SCRIPTPATH/$CONSOLE -d $DATAPATH start
+sudo -u $USER python $SCRIPTPATH/$CONSOLE -d $DATAPATH restore
+sudo -u $USER python $SCRIPTPATH/$CONSOLE -d $DATAPATH start
 
 # Trap function
 _trap() {
@@ -48,10 +48,10 @@ _trap() {
     ALIVE=1
     while [ $ALIVE != 0 ]; do
         ALIVE=`pgrep $PID | wc -l`
-        /usr/bin/sleep 1
+        sleep 1
     done
 
-    /usr/bin/sudo -u $USER /user/bin/python $SCRIPTPATH/$CONSOLE -d $DATAPATH stop
+    sudo -u $USER python $SCRIPTPATH/$CONSOLE -d $DATAPATH stop
 }
 trap '_trap' 15
 
